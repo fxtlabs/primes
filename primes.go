@@ -34,7 +34,6 @@
 package primes
 
 import (
-	"fmt"
 	"math"
 	"sort"
 )
@@ -44,10 +43,7 @@ var primes []int
 
 func init() {
 	// Cache the first 1,229 prime numbers (i.e. all primes <= 10,000)
-	// FIXME: should I change n to get exactly 1,024 primes?
 	primes = Sieve(10000)
-	// FIXME: remove print
-	fmt.Printf("cache len=%d, cap=%d\n", len(primes), cap(primes))
 }
 
 // Pi returns the number of primes less than or equal to n.
@@ -141,7 +137,7 @@ func Coprime(a, b int) bool {
 // Sieve returns a list of the prime numbers less than or equal to n.
 // If n is less than 2, it returns an empty list.
 // The function uses the sieve of Eratosthenes algorithm
-// https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+// (see https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)
 // with the following optimizations:
 //
 // * The initial list of candidate primes includes odd numbers only.
@@ -152,15 +148,19 @@ func Coprime(a, b int) bool {
 //
 // Sieve takes O(n) memory and runs in O(n log log n) time.
 func Sieve(n int) []int {
-	if n < 2 {
+	switch {
+	case n < 2:
 		return []int{}
+	case n == 2:
+		return []int{2}
 	}
 	// a[i] == false ==> p=2*i+3 is a candidate prime
 	// p in [3,n] ==> i in [0,(n-3)/2]
 	length := 1 + (n-3)/2
 	a := make([]bool, length, length)
 	// Start with number 3 and consider only odd numbers
-	for i, p := 0, 3; p*p <= n; p += 2 {
+	sqrtn := int(math.Sqrt(float64(n)))
+	for i, p := 0, 3; p <= sqrtn; p += 2 {
 		if !a[i] {
 			// 2*i+1 is a prime number; mark off its multiples
 			for j := (p*p - 3) / 2; j < length; j += p {
