@@ -24,8 +24,8 @@ package primes_test
 
 import (
 	"math"
+	"math/rand"
 	"testing"
-	"testing/quick"
 
 	"github.com/fxtlabs/primes"
 )
@@ -88,11 +88,16 @@ func TestIsPrimeAgainstBaseline(t *testing.T) {
 		p := primes.IsPrime(n)
 		q := baselineIsPrime(n)
 		if p != q {
-			t.Errorf("ISPrimeAgainstBaseline(%d) == %v, want %v", n, p, q)
+			t.Errorf("IsPrimeAgainstBaseline(%d) == %v, want %v", n, p, q)
 		}
 	}
-	if err := quick.CheckEqual(primes.IsPrime, baselineIsPrime, &quick.Config{MaxCount: 50}); err != nil {
-		t.Error(err)
+	for i := 0; i < 10000; i++ {
+		n := rand.Intn(math.MaxInt32)
+		p := primes.IsPrime(n)
+		q := baselineIsPrime(n)
+		if p != q {
+			t.Errorf("IsPrimeAgainstBaseline(%d) == %v, want %v", n, p, q)
+		}
 	}
 }
 
