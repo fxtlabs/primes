@@ -49,7 +49,7 @@ func init() {
 
 // Pi returns the number of primes less than or equal to n.
 // If ok is true, the result is correct; otherwise it is an estimate
-// computed as n/(log(n)-1) with an error proven smaller than 11%.
+// computed as n/(log(n)-1) with an error generally below 1% (see tests).
 // This estimate is based on the prime number theorem which states that the
 // number of primes not exceeding n is asymptotic to n/log(n).
 // Better approximations are known, but they are more complex.
