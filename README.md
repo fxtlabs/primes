@@ -1,7 +1,8 @@
 # primes
 
-[![Build Status](https://api.travis-ci.org/fxtlabs/primes.svg?branch=master)](https://travis-ci.org/fxtlabs/primes)
 [![GoDoc](https://img.shields.io/badge/api-Godoc-blue.svg?style=flat-square)](https://godoc.org/github.com/fxtlabs/primes)
+[![Build Status](https://api.travis-ci.org/fxtlabs/primes.svg?branch=master)](https://travis-ci.org/fxtlabs/primes)
+[![Coverage Status](https://coveralls.io/repos/fxtlabs/primes/badge.svg?branch=master&service=github)](https://coveralls.io/github/fxtlabs/primes?branch=master)
 
 Package `primes` provides simple functionality for working with prime numbers.
 
