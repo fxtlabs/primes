@@ -133,13 +133,13 @@ func BenchmarkBaselineSieve(b *testing.B) {
 }
 
 func benchmarkIsPrime(b *testing.B, isPrime func(n int) bool) int {
-	n := 0
-	for i := 0; i < b.N; i++ {
+	nps := 0
+	for n := 0; n < b.N; n++ {
 		if isPrime(n) {
-			n++
+			nps++
 		}
 	}
-	return n
+	return nps
 }
 
 func BenchmarkIsPrime(b *testing.B) {
