@@ -23,4 +23,4 @@ full documentation and examples.
 
 ## License
 
-The MIT License (MIT). See the LICENSE files in this directory.
+The MIT License (MIT). See the LICENSE file in this directory.

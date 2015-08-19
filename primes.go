@@ -83,12 +83,15 @@ func Pi(n int) (pi int, ok bool) {
 // It uses trial division to check whether n can be divided exactly by any
 // number that is less than n.
 // The algorithm can be very slow on large n despite a number of optimizations:
-// - If n is relatively small, it is compared against a cached table of primes.
-// - Only numbers up to sqrt(n) are used to check for primality.
-// - n is first checked for divisibility by the primes in the cache and
-//   only if the test is inconclusive, n is checked against more numbers.
-// - Only odd numbers greater than the last prime in the cache are checked
-//   after that.
+//
+// * If n is relatively small, it is compared against a cached table of primes.
+//
+// * Only numbers up to sqrt(n) are used to check for primality.
+//
+// * n is first checked for divisibility by the primes in the cache and only if the test is inconclusive, n is checked against more numbers.
+//
+// * Only odd numbers greater than the last prime in the cache are checked after that.
+//
 // See https://en.wikipedia.org/wiki/Primality_test and
 // https://en.wikipedia.org/wiki/Trial_division for details.
 func IsPrime(n int) bool {
@@ -140,12 +143,13 @@ func Coprime(a, b int) bool {
 // The function uses the sieve of Eratosthenes algorithm
 // https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 // with the following optimizations:
-// - The initial list of candidate primes includes odd numbers only.
-// - Given a prime p, only multiples of p greater than or equal to p*p need
-//   to be marked off since smaller multiples of p have already been marked off
-//   by then.
-// - The above also implies that the algorithm can terminate as soon as it finds
-//   a prime p such that p*p is greater than n.
+//
+// * The initial list of candidate primes includes odd numbers only.
+//
+// * Given a prime p, only multiples of p greater than or equal to p*p need to be marked off since smaller multiples of p have already been marked off by then.
+//
+// * The above also implies that the algorithm can terminate as soon as it finds  a prime p such that p*p is greater than n.
+//
 // Sieve takes O(n) memory and runs in O(n log log n) time.
 func Sieve(n int) []int {
 	if n < 2 {
