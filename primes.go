@@ -29,7 +29,8 @@
 // The algorithms used to implement the functions above are fairly simple;
 // they work well with relatively small primes, but they are definitely not
 // intended for work in cryptography or any application requiring really
-// large primes.
+// large primes.  Run the benchmarks to check their performance against
+// simpler baseline implementations.
 //
 package primes
 

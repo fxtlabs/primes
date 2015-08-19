@@ -12,7 +12,9 @@ and `Pi(n)` to count (or estimate) the number of primes less than or equal to n.
 The algorithms used to implement the functions above are fairly simple;
 they work well with relatively small primes, but they are definitely not
 intended for work in cryptography or any application requiring really
-large primes.
+large primes.  Run the benchmarks to check their performance against
+simpler baseline implementations.
+
 
 See [package documentation](https://godoc.org/github.com/fxtlabs/primes) for
 full documentation and examples.
