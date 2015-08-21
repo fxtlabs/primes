@@ -87,7 +87,7 @@ func Pi(n int) (pi int, ok bool) {
 //
 // * n is first checked for divisibility by the primes in the cache and only if the test is inconclusive, n is checked against more numbers.
 //
-// * Only odd numbers greater than the last prime in the cache are checked after that.
+// * Only numbers of the form 6*k+|-1 that are greater than the last prime in the cache are checked after that.
 //
 // See https://en.wikipedia.org/wiki/Primality_test and
 // https://en.wikipedia.org/wiki/Trial_division for details.
@@ -109,9 +109,9 @@ func IsPrime(n int) bool {
 		}
 	}
 	// When you run out of cached primes, check if n is divisible by
-	// any odd number larger than the largest prime in the cache.
-	for d := pMax + 2; d <= max; d += 2 {
-		if n%d == 0 {
+	// any number 6*k+|-1 larger than the largest prime in the cache.
+	for d := (pMax/6+1)*6 - 1; d <= max; d += 6 {
+		if n%d == 0 || n%(d+2) == 0 {
 			return false
 		}
 	}
